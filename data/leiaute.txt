@@ -4,9 +4,10 @@ Esquemas XSD v. S-1.0 - NT 05/2022 - versão em produção
 Leiautes do eSocial v. S-1.0 (até NT 06/2022) - formato HTML
 Leiautes do eSocial v. S-1.0 (até NT 06/2022) - formato PDF
 Esquemas XSD v. S-1.0 - NT 06/2022 - versão em produção a partir de 16/01/2023
-Manual de Orientação do eSocial v. S-1.0 (até NO 11/2022) - retif. em 17/05/2022
-Leiautes do eSocial v. S-1.1 - Beta (rev.)
-Manual de Orientação do eSocial - Versão beta de orientações sobre os eventos relativos a processos trabalhistas - retif. em 05/10/2022
+Leiautes do eSocial v. S-1.1 - formato HTML
+Leiautes do eSocial v. S-1.1 - formato PDF
+Esquemas XSD v. S-1.1
+Manual de Orientação do eSocial v. S-1.1
 MANUAL DE ORIENTAÇÃO DO DESENVOLVEDOR DO ESOCIAL VERSÃO 1.12
 Mensagens do Sistema - v. 2.1
 Pacote de Comunicação eSocial v.1.5

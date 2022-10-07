@@ -7,12 +7,13 @@ Nota Técnica v. S-1.0 06/2022 - 09/08/2022
 Minuta da Nota de Documentação Evolutiva v. S-1.0 - 
 NDE 
 01/2021 - IR sobre Rendimentos do Trabalho
-MANUAL DE ORIENTAÇÃO DO ESOCIAL SIMPLIFICADO v.S-1.0 Consolidado até Nota Orientativa S-1.0 nº 11/2022
-
-MOS - Consolidado até Nota Orientativa S-1.0 nº 11/2022 - com marcações de alterações
-- Controle de alterações (NO S-1.0 nº 11/2022)
+MANUAL DE ORIENTAÇÃO DO ESOCIAL SIMPLIFICADO v. S-1.1
+- MOS v. S-1.1 - com marcações e alterações - 07/10/2022
+- Controle de alterações (NO S-1.1 nº 01/2022)
 Manual de Orientação do eSocial - Versão beta de orientações sobre os eventos relativos a processos trabalhistas
+ - retificado em 05/10/2022
 MANUAL DO ESOCIAL PARA O EMPREGADOR DOMÉSTICO
+Nota Orientativa v. S-1.1 nº 01/2022 - Alterações da versão S-1.1 em relação à versão S-1.0 do Manual de Orientação do eSocial - MOS
 Nota Orientativa v. S-1.0 nº 01/2021 - Rev. 06/07/2021 - Convivência de versões 2.5 e S-1.0
 Nota Orientativa v. S-1.0 nº 02/2021 - Orientações sobre a utilização de rubricas relacionadas a descontos decorrentes de faltas, atrasos e DSR
 Nota Orientativa v. S-1.0 nº 03/2021 - Alterações na versão S-1.0 do Manual de Orientação do eSocial - MOS
@@ -25,9 +26,10 @@ Nota Orientativa v. S-1.0 nº 09/2021 - Alterações na versão S-1.0 do Manual 
 Nota Orientativa v. S-1.0 nº 10/2022 - Alterações na versão S-1.0 do Manual de Orientação do eSocial - MOS - 09/02/2022
 Nota Orientativa v. S-1.0 nº 11/2022 - Alterações na versão S-1.0 do Manual de Orientação do eSocial - MOS - 16/05/2022
 Nota Orientativa v. S-1.0 nº 12/2022 - Alterações na versão S-1.0 do Manual de Orientação do eSocial - MOS - 13/09/2022
-LEIAUTES DO ESOCIAL SIMPLIFICADO V. S-1.1 BETA - Revisada - 28/07/2022
-Controle de alterações eSocial S-1.0 (consolidados até Nota Técnica 05/2022) vs. eSocial S-1.1 Beta - Revisada -  28/07/2022
-Esquemas XSD v. S-1.1 - Beta - 28/07/2022
+LEIAUTES DO ESOCIAL SIMPLIFICADO V. S-1.1
+- Controle de alterações v. S-1.0 (consolidados até Nota Técnica 06/2022) vs. v. S-1.1
+- Esquemas XSD v. S-1.1
+LEIAUTES DO ESOCIAL SIMPLIFICADO V. S-1.1 - versão em HTML
 LEIAUTES DO ESOCIAL SIMPLIFICADO V. S-1.0 (consolidados até a Nota Técnica 06/2022) - 09/08/2022
 LEIAUTES DO ESOCIAL SIMPLIFICADO V S-1.0 (consolidados até a Nota Técnica 06/2022) - versão em HTML - 09/08/2022
 - Esquemas XSD v. S-1.0 (NT 06/2022) - 09/08/2022
