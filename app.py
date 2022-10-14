@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import os 
-import webbrowser
 from win10toast_click import ToastNotifier
 
 
@@ -9,8 +8,7 @@ if os.path.exists('./data') == False:
     os.mkdir('./data')
     file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
     file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
-    leiautes = []
-    notasTecnicas = []
+   
 
     toaster = ToastNotifier()
     r = requests.get('https://www.gov.br/esocial/pt-br/documentacao-tecnica/documentacao-tecnica')
@@ -20,14 +18,10 @@ if os.path.exists('./data') == False:
     leiautes_request = soup.find_all('a',{'class':'outstanding-link'})
     notasTecnicas_request = soup.find_all('a',{'class':'internal-link'})
 
-
-    for nota in notasTecnicas_request:
-        notasTecnicas.append(nota.text)
-
-    for documento in leiautes_request:
-        leiautes.append(documento.text)
-
-
+    notasTecnicas = [nota.text for nota in notasTecnicas_request]
+    leiautes = [leiaute.text for leiaute in leiautes_request]
+   
+ 
     for i in leiautes:
         file_leiaute.writelines(f'{i}\n')
 
@@ -45,20 +39,15 @@ if os.path.exists('./data') == False:
 
 else:
     browser = 'https://www.gov.br/esocial/pt-br/documentacao-tecnica/documentacao-tecnica'
-    leiautes = []
-    notasTecnicas = []
-
+  
     toaster = ToastNotifier()
     r = requests.get('https://www.gov.br/esocial/pt-br/documentacao-tecnica/documentacao-tecnica')
     soup = BeautifulSoup(r.text, 'html.parser')
     leiautes_request = soup.find_all('a',{'class':'outstanding-link'})
     notasTecnicas_request = soup.find_all('a',{'class':'internal-link'})
 
-    for nota in notasTecnicas_request:
-        notasTecnicas.append(nota.text)
-
-    for leiaute in leiautes_request:
-        leiautes.append(leiaute.text)
+    notasTecnicas = [nota.text for nota in notasTecnicas_request]
+    leiautes = [leiaute.text for leiaute in leiautes_request]
 
     with open('./data/leiaute.txt', 'r', encoding="utf-8") as texto:
         leiautes_old = texto.readlines()
@@ -79,7 +68,24 @@ else:
                 file_leiaute.writelines(f'{j}\n')
                  
 
-    if len(leiautes_old) == len(leiautes) or len(notasTecnicas_old) == len(notasTecnicas):
+    if len(leiautes_old) == len(leiautes) and len(notasTecnicas_old) == len(notasTecnicas):    
+        toaster.show_toast("Não houve alterações no eSocial", "teste notificação", icon_path='./assets/esocial.ico', duration=10)
+    
+    elif len(leiautes_old) != len(leiautes):
+        file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
+        for j in leiautes:
+            leiautes_old.append(j)
+            file_leiaute.writelines(f'{j}\n')
+        toaster.show_toast("Houve uma alteração no eSocial", "leiaute", icon_path='./assets/esocial.ico', duration=10)
+    
+    elif  len(notasTecnicas_old) != len(notasTecnicas):
+        file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
+        for i in notasTecnicas:
+            notasTecnicas_old.append(i)
+            file_NotasTecnicas.writelines(f'{i}\n')
+        toaster.show_toast("Houve uma alteração no eSocial", "notas técnicas", icon_path='./assets/esocial.ico', duration=10)
+    
+    else:
         file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
         for j in leiautes:
             leiautes_old.append(j)
@@ -89,7 +95,4 @@ else:
         for i in notasTecnicas:
             notasTecnicas_old.append(i)
             file_NotasTecnicas.writelines(f'{i}\n')
-        
-        toaster.show_toast("Não houve alterações no eSocial", "teste notificação", icon_path='./assets/esocial.ico', duration=10)
-    else:
         toaster.show_toast("Houve uma alteração no eSocial", "teste notificação", icon_path='./assets/esocial.ico', duration=10)
