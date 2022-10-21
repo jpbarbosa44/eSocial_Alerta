@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 import os 
-from win10toast import ToastNotifier
+from win10toast_click import ToastNotifier
+
 
 class Alerta():
     
@@ -9,10 +10,17 @@ class Alerta():
         ...
     def driver():
         ...
-    def criaArquivos(self):
+    def criaDiretorio(self):
         os.mkdir('./data')
         self.file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
         self.file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
+    
+    def criaArquivoNotasTecnicas(self):
+        open('./data/leiaute.txt', 'w+', encoding="utf-8")
+
+    def criaArquivoLeiautes(self):
+        open('./data/leiaute.txt', 'w+', encoding="utf-8")
+
     def getRequest(self):
         self.r = requests.get('https://www.gov.br/esocial/pt-br/documentacao-tecnica/documentacao-tecnica')
         
@@ -25,25 +33,26 @@ class Alerta():
         self.notasTecnicas = [nota.text for nota in self.notasTecnicas_request]
         self.leiautes = [leiaute.text for leiaute in self.leiautes_request]
 
-    def populaArquivos(self):
+    def populaArquivoLeiautes(self):
         for i in self.leiautes:
             self.file_leiaute.writelines(f'{i}\n')
-
+        self.file_leiaute.close()
+        
+    def populaArquivoNotasTecnicas(self):
         for j in self.notasTecnicas:
             self.file_NotasTecnicas.writelines(f'{j}\n')
-        
-        self.file_leiaute.close()
-        self.file_NotasTecnicas.close()
+        self.file_NotasTecnicas.close()    
     
-    def populaListaAntiga(self):
+    def populaListaAntigaLeiaute(self):
         with open('./data/leiaute.txt', 'r', encoding="utf-8") as texto:
             self.leiautes_old = texto.readlines()
 
+    def populaListaAntigaNotasTecnicas(self):
         with open('./data/NotasTecnicas.txt', 'r', encoding="utf-8") as texto2:
             self.notasTecnicas_old = texto2.readlines()
     
     def verificaSeNotasTecnicasEstaoVazias(self):
-         if len(self.notasTecnicas_old) == 0:
+        if len(self.notasTecnicas_old) == 0:
             file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
             for i in self.notasTecnicas:
                 self.notasTecnicas_old.append(i)
@@ -55,3 +64,36 @@ class Alerta():
             for j in self.leiautes:
                 self.leiautes_old.append(j)
                 file_leiaute.writelines(f'{j}\n')
+    
+    
+    def realizaAsValidacoes(self):
+        toaster = ToastNotifier()
+        if len(self.leiautes_old) == len(self.leiautes) and len(self.notasTecnicas_old) == len(self.notasTecnicas):    
+            toaster.show_toast("Não houve alterações no eSocial", "teste notificação", icon_path='./assets/esocial.ico', duration=10)
+    
+        elif len(self.leiautes_old) != len(self.leiautes):
+            self.file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
+            for j in self.leiautes:
+                self.leiautes_old.append(j)
+                self.file_leiaute.writelines(f'{j}\n')
+            toaster.show_toast("Houve uma alteração no eSocial", "leiaute", icon_path='./assets/esocial.ico', duration=10)
+        
+        elif  len(self.notasTecnicas_old) != len(self.notasTecnicas):
+            self.file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
+            for i in self.notasTecnicas:
+                self.notasTecnicas_old.append(i)
+                self.file_NotasTecnicas.writelines(f'{i}\n')
+            toaster.show_toast("Houve uma alteração no eSocial", "notas técnicas", icon_path='./assets/esocial.ico', duration=10)
+        
+        else:
+            self.file_leiaute = open('./data/leiaute.txt', 'w+', encoding="utf-8")
+            for j in self.leiautes:
+                self.leiautes_old.append(j)
+                self.file_leiaute.writelines(f'{j}\n')
+            
+            self.file_NotasTecnicas = open('./data/NotasTecnicas.txt', 'w+', encoding="utf-8")
+            
+            for i in self.notasTecnicas:
+                self.notasTecnicas_old.append(i)
+                self.file_NotasTecnicas.writelines(f'{i}\n')
+            toaster.show_toast("Houve uma alteração no eSocial", "teste notificação", icon_path='./assets/esocial.ico', duration=10)
